@@ -6,6 +6,7 @@ import Cart from "./Pages/Cart";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Pages/Layout";
 import Users from "./Pages/Users";
+import Category from "./Pages/Category";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/catagory/:categoryName" element={<Category />} />
         </Route>
       </Routes>
     </>

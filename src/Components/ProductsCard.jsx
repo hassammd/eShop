@@ -7,14 +7,10 @@ const ProductsCard = ({ details }) => {
     <>
       <div className="card bg-base-100 w-74 shadow-sm">
         <figure>
-          <img
-            className="aspect-video object-cover"
-            src={details.image}
-            alt="Shoes"
-          />
+          <img className=" " src={details.thumbnail} alt="image" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{details.name}</h2>
+          <h2 className="card-title">{details.title}</h2>
           <p>{details.description}</p>
           <div className="card-actions justify-end">
             <button

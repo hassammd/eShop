@@ -6,7 +6,7 @@ const Layout = () => {
   const themeData = useSelector((state) => state.theme.isDarktheme);
   return (
     <>
-      <div className="h-screen" data-theme={themeData ? "light" : "dark"}>
+      <div className=" " data-theme={themeData ? "light" : "dark"}>
         <Navbar />
         <Outlet />
       </div>
