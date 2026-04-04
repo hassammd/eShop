@@ -17,11 +17,11 @@ const fetchProductsCategories = createAsyncThunk(
       const categoriesList = response.data;
 
       const categoriesWithImage = Promise.all(
-        categoriesList.slice(0, 10).map(async (items) => {
+        categoriesList.slice(0, 30).map(async (items) => {
           const productsRes = await axios.get(
             `https://dummyjson.com/products/category/${items.slug}`,
           );
-          console.log(productsRes);
+
           return { ...items, image: productsRes.data.products[0]?.thumbnail };
         }),
       );

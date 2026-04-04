@@ -14,10 +14,7 @@ const fetchProductCategory = createAsyncThunk(
       const response = await axios.get(
         `https://dummyjson.com/products/category/${payload}`,
       );
-      console.log(
-        "this is response from category slice",
-        response.data.products,
-      );
+
       return response.data.products;
     } catch (error) {
       return rejectWithValue("Some thing went wrong");
@@ -39,6 +36,7 @@ const ProductCategorySlice = createSlice({
       state.categoryItems = action.payload;
     });
     addBuilder.addCase(fetchProductCategory.rejected, (state, action) => {
+      state.loading = false;
       state.error = action.payload;
     });
   },

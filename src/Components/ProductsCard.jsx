@@ -1,27 +1,39 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../RTK/CartSlice/CartSlice";
+import { IoCartOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const ProductsCard = ({ details }) => {
   const dispatch = useDispatch();
+
+  const { loading } = useSelector((state) => state.productCategory);
+  console.log(loading);
+
   return (
     <>
-      <div className="card bg-base-100 w-74 shadow-sm">
-        <figure>
-          <img className=" " src={details.thumbnail} alt="image" />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">{details.title}</h2>
-          <p>{details.description}</p>
-          <div className="card-actions justify-end">
-            <button
-              className="btn btn-primary"
-              onClick={() => dispatch(addToCart(details))}
-            >
-              Buy Now
-            </button>
+      <Link to={`/product/${details.id}`}>
+        <div className="card bg-base-100 p-4 w-74 shadow-sm border border-base-200 rounded-2xl ">
+          <span class="badge badge-lg bg-[#FF7420] text-white">
+            {details.discountPercentage.toFixed(0)}%
+          </span>
+          <figure className=" ">
+            <img className=" " src={details.thumbnail} alt="image" />
+          </figure>
+          <div className="card-body p-0">
+            <h2 className="card-title ">{details.title}</h2>
+            <p className="line-clamp-2  ">{details.description}</p>
+            <div className="flex items-center  justify-between py-2">
+              <span>${details.price}</span>
+              <span className="border h-8 w-8 border-base-300 flex items-center justify-center rounded-4xl ">
+                <IoCartOutline
+                  className="text-xl font-semibold text-[#FF7420] cursor-pointer"
+                  onClick={() => dispatch(addToCart(details))}
+                />
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 };

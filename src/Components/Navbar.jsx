@@ -48,7 +48,7 @@ const Navbar = () => {
                     <NavLink
                       to={"/"}
                       className={({ isActive }) =>
-                        isActive ? "bg-primary text-white" : ""
+                        isActive ? "bg-[#FF7420] text-white" : ""
                       }
                     >
                       Home
@@ -58,7 +58,7 @@ const Navbar = () => {
                   <li>
                     <NavLink
                       className={({ isActive }) =>
-                        isActive ? "bg-primary text-white" : ""
+                        isActive ? "bg-[#FF7420] text-white" : ""
                       }
                       to={"/products"}
                     >
@@ -77,7 +77,7 @@ const Navbar = () => {
                   <NavLink
                     to={"/"}
                     className={({ isActive }) =>
-                      isActive ? "bg-primary text-white" : ""
+                      isActive ? "bg-[#FF7420] text-white" : ""
                     }
                   >
                     Home
@@ -87,7 +87,7 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     className={({ isActive }) =>
-                      isActive ? "bg-primary text-white" : ""
+                      isActive ? "bg-[#FF7420] text-white" : ""
                     }
                     to={"/products"}
                   >
@@ -97,7 +97,7 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     className={({ isActive }) =>
-                      isActive ? "bg-primary text-white" : ""
+                      isActive ? "bg-[#FF7420] text-white" : ""
                     }
                     to={"/users"}
                   >
@@ -129,7 +129,7 @@ const Navbar = () => {
                         d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                       />
                     </svg>
-                    <span className="badge badge-sm rounded-2xl indicator-item bg-primary text-white p-1.5">
+                    <span className="badge badge-sm rounded-2xl indicator-item bg-[#FF7420] text-white p-1.5">
                       {cartCount}
                     </span>
                   </div>

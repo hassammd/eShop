@@ -4,6 +4,7 @@ import ThemeControllerSlice from "./ThemeControllerSlice";
 import userSlice from "./UsersSlice/UsersSlice";
 import productSlice from "./ProductSlice/CategoriesSlice";
 import ProductCategorySlice from "./ProductCategorySlice/ProductCategorySlice";
+import SingleProductSlice from "./SingleProductSlice/SingleProductSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     user: userSlice,
     categories: productSlice,
     productCategory: ProductCategorySlice,
+    singleProduct: SingleProductSlice,
   },
 });
