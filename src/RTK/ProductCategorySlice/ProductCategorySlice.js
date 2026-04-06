@@ -30,13 +30,14 @@ const ProductCategorySlice = createSlice({
   extraReducers: (addBuilder) => {
     addBuilder.addCase(fetchProductCategory.pending, (state, action) => {
       state.loading = true;
+      state.categoryItems = [];
     });
     addBuilder.addCase(fetchProductCategory.fulfilled, (state, action) => {
       state.loading = false;
       state.categoryItems = action.payload;
     });
     addBuilder.addCase(fetchProductCategory.rejected, (state, action) => {
-      state.loading = false;
+      state.loading = true;
       state.error = action.payload;
     });
   },

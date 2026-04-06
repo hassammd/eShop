@@ -41,6 +41,7 @@ const productSlice = createSlice({
   extraReducers: (addBuilder) => {
     addBuilder.addCase(fetchProductsCategories.pending, (state, action) => {
       state.loading = true;
+      state.categories = [];
     });
     addBuilder.addCase(fetchProductsCategories.fulfilled, (state, action) => {
       state.loading = false;

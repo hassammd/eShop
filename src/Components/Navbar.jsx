@@ -1,9 +1,10 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import ThemeController from "./ThemeController ";
 
 const Navbar = () => {
-  const cartData = useSelector((state) => state.cart.cartItems);
+  const cartData = useSelector((state) => state.productCart.cart);
+  const dispatch = useDispatch();
 
   const cartCount = cartData.reduce((acc, current) => {
     return acc + current.quantity;
@@ -12,6 +13,10 @@ const Navbar = () => {
   const subtotal = cartData.reduce((acc, current) => {
     return acc + current.quantity * current.price;
   }, 0);
+
+  const categories = useSelector((state) => state.categories.categories);
+  const data = useSelector((state) => state.categories.categories);
+  console.log("categories", data);
 
   return (
     <>
@@ -54,6 +59,19 @@ const Navbar = () => {
                       Home
                     </NavLink>
                   </li>
+                  <li>
+                    <details>
+                      <summary>Parent</summary>
+                      <ul className="p-2 bg-base-100 w-40 z-1">
+                        <li>
+                          <a>Submenu 1</a>
+                        </li>
+                        <li>
+                          <a>Submenu 2</a>
+                        </li>
+                      </ul>
+                    </details>
+                  </li>
 
                   <li>
                     <NavLink
@@ -83,17 +101,23 @@ const Navbar = () => {
                     Home
                   </NavLink>
                 </li>
-
                 <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive ? "bg-[#FF7420] text-white" : ""
-                    }
-                    to={"/products"}
-                  >
-                    Products
-                  </NavLink>
+                  <details>
+                    <summary>Categories</summary>
+                    <ul className="p-2 bg-base-100 w-40 z-1">
+                      {categories.slice(0, 5).map((items, index) => {
+                        return (
+                          <li key={items.slug || index}>
+                            <Link to={`/category/${items.slug}`}>
+                              {items.name}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </details>
                 </li>
+
                 <li>
                   <NavLink
                     className={({ isActive }) =>
@@ -144,7 +168,10 @@ const Navbar = () => {
                       Subtotal: ${subtotal.toFixed(2)}
                     </span>
                     <div className="card-actions">
-                      <Link to={"/cart"} className="btn btn-primary btn-block">
+                      <Link
+                        to={"/cart"}
+                        className="btn bg-[#FF7420] btn-block text-white"
+                      >
                         View cart
                       </Link>
                     </div>

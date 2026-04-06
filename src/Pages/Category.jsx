@@ -9,14 +9,15 @@ import BackBtn from "../Components/BackBtn";
 const Catagory = () => {
   const { categoryName } = useParams();
   const data = useSelector((state) => state);
+  console.log("this is data ", data);
   const category = data.productCategory.categoryItems;
   const loading = data.productCategory.loading;
-  console.log("this is loading", loading);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchProductCategory(categoryName));
-  }, []);
+  }, [categoryName]);
 
   return (
     <>

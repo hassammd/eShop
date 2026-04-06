@@ -4,13 +4,12 @@ import { useParams } from "react-router-dom";
 import { fetchSingleProduct } from "../RTK/SingleProductSlice/SingleProductSlice";
 import Reviews from "../Components/Reviews";
 import { TiTick } from "react-icons/ti";
+import { addToCart } from "../RTK/CartSlice/CartSlice";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
   const { productId } = useParams();
   const { product, loading } = useSelector((state) => state.singleProduct);
-  console.log("this is data from single product", product);
-  console.log("this is param", productId);
 
   useEffect(() => {
     if (productId) {
@@ -34,7 +33,6 @@ const SingleProduct = () => {
             <div className="carousel w-full">
               {product.images &&
                 product.images.map((img, index) => {
-                  console.log(img);
                   return (
                     <div
                       id={`slide${index}`}
@@ -74,7 +72,10 @@ const SingleProduct = () => {
               </span>
             </div>
             <div>
-              <button className="btn btn-wide bg-[#FF7420] text-white">
+              <button
+                onClick={() => dispatch(addToCart(product))}
+                className="btn btn-wide bg-[#FF7420] text-white"
+              >
                 Add To Cart
               </button>
             </div>
