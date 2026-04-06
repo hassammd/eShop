@@ -12,9 +12,12 @@ const fetchProductCategory = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `https://dummyjson.com/products/category/${payload}`,
-        // `/api/dummyjson/products/category/${payload}`,
+        `/api/dummyjson/products/category/${payload}`,
       );
+      // const response = await axios.get(
+      //   `https://dummyjson.com/products/category/${payload}`,
+      //   // `/api/dummyjson/products/category/${payload}`,
+      // );
 
       return response.data.products;
     } catch (error) {
