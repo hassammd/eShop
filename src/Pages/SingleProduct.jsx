@@ -8,6 +8,7 @@ import { addToCart } from "../RTK/CartSlice/CartSlice";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
+
   const { productId } = useParams();
   const { product, loading } = useSelector((state) => state.singleProduct);
 
@@ -25,6 +26,10 @@ const SingleProduct = () => {
   if (!product) {
     return <h1>Product Not Found</h1>;
   }
+
+  const cartHandler = (product) => {
+    dispatch(addToCart(product));
+  };
   return (
     <>
       <div className="container">
@@ -73,7 +78,7 @@ const SingleProduct = () => {
             </div>
             <div>
               <button
-                onClick={() => dispatch(addToCart(product))}
+                onClick={() => cartHandler(product)}
                 className="btn btn-wide bg-[#FF7420] text-white"
               >
                 Add To Cart

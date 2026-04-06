@@ -1,13 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../RTK/CartSlice/CartSlice";
 import { IoCartOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProductsCard = ({ details }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { loading } = useSelector((state) => state.productCategory);
   console.log(loading);
+
+  const cartHandler = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch(addToCart(details));
+    navigate("/cart");
+  };
 
   return (
     <>
@@ -27,7 +35,7 @@ const ProductsCard = ({ details }) => {
               <span className="border h-8 w-8 border-base-300 flex items-center justify-center rounded-4xl ">
                 <IoCartOutline
                   className="text-xl font-semibold text-[#FF7420] cursor-pointer"
-                  onClick={() => dispatch(addToCart(details))}
+                  onClick={cartHandler}
                 />
               </span>
             </div>
