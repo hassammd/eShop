@@ -31,7 +31,8 @@ const Catagory = () => {
             ? [...Array(10)].map((items) => {
                 return <Shimmer />;
               })
-            : category.map((items) => {
+            : category &&
+              category.map((items) => {
                 return <ProductsCard details={items} />;
               })}
         </div>
