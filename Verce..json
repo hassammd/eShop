@@ -3,6 +3,10 @@
     {
       "source": "/api/dummyjson/:path*",
       "destination": "https://dummyjson.com/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
